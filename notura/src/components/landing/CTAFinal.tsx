@@ -55,7 +55,7 @@ export function CTAFinal() {
             </div>
 
             <p className="mt-6 text-white/50 text-sm">
-              Sem cartão de crédito · Setup em 30 segundos · Cancele quando quiser
+              Setup em um minuto · Cancele quando quiser
             </p>
 
             {/* Social proof */}

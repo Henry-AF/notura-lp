@@ -48,18 +48,18 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="#" className="text-sm font-medium text-gray-600 hover:text-violet-700 transition-colors px-3 py-2">
+          <a href="https://notura-app.vercel.app/login" className="text-sm font-medium text-gray-600 hover:text-violet-700 transition-colors px-3 py-2">
             Entrar
           </a>
-          <motion.button
+          <motion.a
+            href="https://notura-app.vercel.app/signup"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => scroll("#cta")}
             className="text-sm font-semibold text-white px-5 py-2.5 rounded-full shadow-lg transition-all"
             style={{ background: "linear-gradient(135deg, #6851FF 0%, #8B6FFF 100%)", boxShadow: "0 4px 14px rgba(104,81,255,0.35)" }}
           >
             Criar conta
-          </motion.button>
+          </motion.a>
         </div>
 
         <button className="md:hidden p-2 text-gray-600" onClick={() => setMobileOpen(v => !v)}>

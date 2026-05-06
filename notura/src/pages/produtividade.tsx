@@ -94,29 +94,29 @@ const socialProofItems = [
 
 const faqItems = [
   {
-    question: "Minha reunião fica salva? Quem tem acesso ao áudio?",
-    answer:
-      "A Notura processa o conteúdo com controles de acesso e fluxo orientado a privacidade. O resumo final é entregue no WhatsApp e o acesso operacional fica restrito aos responsáveis autorizados.",
-  },
-  {
     question: "Funciona com Google Meet, Zoom, Teams e ligações normais?",
     answer:
-      "Sim. O fluxo foi desenhado para equipes que usam as principais plataformas de reunião do mercado, incluindo Google Meet, Zoom e Microsoft Teams.",
+      "Sim. Notura funciona com as principais plataformas: Google Meet, Zoom e Microsoft Teams. Se sua reunião acontece lá, o resumo chega no WhatsApp automaticamente.",
   },
   {
-    question: "O resumo é enviado automaticamente ou preciso acionar?",
+    question: "O resumo é enviado automaticamente ou preciso fazer algo?",
     answer:
-      "O envio é automático. A reunião termina, a IA organiza decisões e próximos passos, e o resumo estruturado segue direto para o WhatsApp configurado.",
+      "Nada. A reunião termina, a IA identifica decisões e tarefas, monta o resumo e envia direto no WhatsApp — sem você acionar nada. É automático do início ao fim.",
   },
   {
-    question: "Como o WhatsApp recebe o resumo? Precisa instalar algo?",
+    question: "Quanto tempo leva para o resumo chegar no WhatsApp?",
     answer:
-      "Não precisa instalar um app extra para ler o resumo. A experiência é centrada em receber a mensagem pronta no WhatsApp, com tarefas e decisões já organizadas.",
+      "Segundos após o fim da reunião. Enquanto você ainda está fechando a call, o resumo já está na mão do seu cliente e do seu time.",
+  },
+  {
+    question: "Minha reunião fica gravada? Quem tem acesso?",
+    answer:
+      "A Notura processa o conteúdo para gerar o resumo e apaga o áudio após o processamento. Só você e quem você autorizar têm acesso ao resumo e às tarefas.",
   },
   {
     question: "Posso cancelar a qualquer momento?",
     answer:
-      "Sim. Todos os planos podem ser cancelados quando quiser e o plano pago ainda conta com garantia de 7 dias para reduzir risco na primeira compra.",
+      "Sim, sem pegadinhas. Cancele quando quiser, direto no painel. E se cancelar nos primeiros 7 dias, devolvemos 100% do valor — sem perguntas.",
   },
 ];
 
@@ -216,17 +216,17 @@ function NavBar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/"
+          <a
+            href="https://notura-app.vercel.app/login"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Entrar
-          </Link>
+          </a>
           <Button
+            asChild
             className="rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/25 h-9 px-5 text-sm"
-            onClick={() => scrollTo("#cta")}
           >
-            Receber meu primeiro resumo grátis
+            <a href="https://notura-app.vercel.app/signup">Resumo grátis</a>
           </Button>
         </div>
 
@@ -257,10 +257,10 @@ function NavBar() {
                 </button>
               ))}
               <Button
+                asChild
                 className="rounded-full bg-primary text-white mt-2"
-                onClick={() => scrollTo("#cta")}
               >
-                Receber meu primeiro resumo grátis
+                <a href="https://notura-app.vercel.app/signup">Resumo grátis</a>
               </Button>
             </div>
           </motion.div>
@@ -292,7 +292,7 @@ function HeroSection() {
           Mais de 1.200 reuniões resumidas esta semana
         </Badge>
 
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
+        {/* <div className="mb-6 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3 py-1.5 backdrop-blur-sm">
             {[1, 2, 3, 4, 5].map((star) => (
               <Star key={star} className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
@@ -304,7 +304,7 @@ function HeroSection() {
             <BadgeCheck className="h-4 w-4 text-primary" />
             Resumo enviado em segundos no WhatsApp
           </span>
-        </div>
+        </div> */}
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.1] mb-6 max-w-5xl">
           Nunca mais perca o que foi decidido na reunião.
@@ -319,13 +319,12 @@ function HeroSection() {
           <Button
             size="lg"
             className="rounded-full h-14 px-8 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/25 text-base font-semibold group"
-            onClick={() => {
-              const el = document.querySelector("#cta");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
+            asChild
           >
-            Receber meu primeiro resumo grátis
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <a href="https://notura-app.vercel.app/signup">
+              Resumo grátis
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
           <Button
             size="lg"
@@ -342,7 +341,7 @@ function HeroSection() {
         </div>
 
         <p className="mt-4 text-sm text-muted-foreground">
-          Grátis para começar · Sem cartão de crédito · Funciona com Zoom, Google Meet e Teams
+          Grátis para começar · Sem cartão de crédito · Processa sua reunião em 1 minuto
         </p>
 
         <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
@@ -352,7 +351,7 @@ function HeroSection() {
           </span>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-green-500" />
-            Setup em 5 minutos
+            Setup em 2 minutos
           </span>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-green-500" />
@@ -364,7 +363,7 @@ function HeroSection() {
       <motion.div
         animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 hidden lg:flex items-center gap-3 p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border shadow-2xl"
+        className="absolute top-1/4 left-[18%] hidden lg:flex items-center gap-3 p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border shadow-2xl"
       >
         <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
           <CheckCircle2 className="w-5 h-5 text-green-500" />
@@ -394,17 +393,17 @@ function HeroSection() {
 
 function ComparisonSection() {
   const semNotura = [
-    { time: "09:00", title: "Reunião de Alinhamento", duration: "1h 30m", desc: "Anotações espalhadas em 3 docs diferentes" },
-    { time: "10:30", title: "Escrever Ata", duration: "45m", desc: "Tentando lembrar o que foi decidido" },
-    { time: "14:00", title: "Reunião com Cliente", duration: "1h", desc: "Foco dividido entre ouvir e anotar" },
-    { time: "15:00", title: "Follow-up", duration: "30m", desc: "Enviando mensagens manuais cobrando status" },
+    { time: "09:00", title: "Reunião com Cliente", duration: "1h", desc: "Foco dividido: ouvir e anotar ao mesmo tempo" },
+    { time: "10:00", title: "Escrever Ata", duration: "1h 30m", desc: "Tentando lembrar o que foi decidido" },
+    { time: "11:30", title: "Criar Tarefas no Board", duration: "25m", desc: "Copiando itens da ata um por um" },
+    { time: "11:55", title: "Enviar Resumo ao Cliente", duration: "20m", desc: "Redigindo mensagem com o que foi combinado" },
+    { time: "14:30", title: "Cobrar Pendências", duration: "30m", desc: "Cliente não viu nada — começa tudo de novo" },
   ];
   const comNotura = [
-    { time: "09:00", title: "Reunião de Alinhamento", duration: "45m", desc: "Foco total na conversa", type: "meeting" },
-    { time: "09:45", title: "Resumo + Tarefas geradas", duration: "Instantâneo", desc: "Enviado direto pro WhatsApp do time", type: "ai" },
-    { time: "10:00", title: "Trabalho Profundo", duration: "2h 30m", desc: "Executando o que realmente importa", type: "work" },
-    { time: "14:00", title: "Reunião com Cliente", duration: "45m", desc: "Com transcrição e tradução em tempo real", type: "meeting" },
-    { time: "14:45", title: "Insights p/ CRM", duration: "Instantâneo", desc: "Dados estruturados pela IA", type: "ai" },
+    { time: "09:00", title: "Reunião com Cliente", duration: "1h", desc: "Foco total na conversa", type: "meeting" },
+    { time: "10:00", title: "Resumo gerado", duration: "Instantâneo", desc: "Decisões identificadas e enviadas ao cliente no WhatsApp", type: "ai" },
+    { time: "10:00", title: "Kanban atualizado", duration: "Automático", desc: "Tarefas criadas, atribuídas e com prazo", type: "ai" },
+    { time: "10:05", title: "Trabalho Profundo", duration: "Resto do dia", desc: "Time executando. Cliente informado. Feito.", type: "work" },
   ];
 
   return (
@@ -418,8 +417,7 @@ function ComparisonSection() {
             O fim do caos operacional
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground">
-            Veja como uma semana típica se transforma quando a inteligência
-            artificial cuida do trabalho invisível.
+            Veja o que acontece logo após uma reunião com cliente — com e sem Notura.
           </p>
         </div>
 
@@ -682,7 +680,7 @@ function BeforeAfterSection() {
             </div>
           </div>
 
-          <div className="relative h-[400px] md:h-[340px] rounded-3xl overflow-hidden border border-zinc-800 bg-black shadow-2xl">
+          <div className="relative rounded-3xl overflow-hidden border border-zinc-800 bg-black shadow-2xl">
             <AnimatePresence mode="wait">
               {!isAfter ? (
                 <motion.div
@@ -691,7 +689,7 @@ function BeforeAfterSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 p-8 flex items-center justify-center"
+                  className="p-8 flex items-center justify-center min-h-[340px]"
                 >
                   <p className="text-zinc-500 font-mono text-sm leading-relaxed max-w-2xl blur-[1px] hover:blur-none transition-all">
                     "...então acho que a gente devia focar no onboarding,
@@ -712,7 +710,7 @@ function BeforeAfterSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 p-5 md:p-8 bg-zinc-900/50 flex flex-col justify-center"
+                  className="p-5 md:p-8 bg-zinc-900/50"
                 >
                   <div className="grid gap-6 md:grid-cols-[1.05fr_0.95fr] max-w-4xl mx-auto w-full items-start">
                     <div className="space-y-6">
@@ -722,11 +720,11 @@ function BeforeAfterSection() {
                         </h4>
                         <ul className="space-y-2 text-sm text-zinc-300">
                           <li className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                            <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
                             Foco prioritário no fluxo de onboarding
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                            <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
                             Nova reunião de alinhamento marcada para quarta-feira
                           </li>
                         </ul>
@@ -738,13 +736,13 @@ function BeforeAfterSection() {
                         <ul className="space-y-3 text-sm">
                           <li className="bg-zinc-800 p-3 rounded-lg flex justify-between items-center gap-3">
                             <span>Finalizar documentação do onboarding</span>
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-700">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-700 shrink-0">
                               João • Sex
                             </Badge>
                           </li>
                           <li className="bg-zinc-800 p-3 rounded-lg flex justify-between items-center gap-3">
                             <span>Revisão final da API de pagamentos</span>
-                            <Badge variant="outline" className="text-zinc-400 border-zinc-700">
+                            <Badge variant="outline" className="text-zinc-400 border-zinc-700 shrink-0">
                               Maria
                             </Badge>
                           </li>
@@ -754,28 +752,34 @@ function BeforeAfterSection() {
                     <Card className="overflow-hidden border-green-900/70 bg-[#0b141a] text-white shadow-2xl">
                       <div className="flex items-center justify-between border-b border-white/10 bg-[#111b21] px-4 py-3">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/20 text-green-400 font-semibold">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-500/20 text-green-400 font-semibold text-sm">
                             N
                           </div>
                           <div>
-                            <p className="font-semibold">Notura</p>
+                            <p className="font-semibold text-sm">Notura</p>
                             <p className="text-xs text-zinc-400">online agora</p>
                           </div>
                         </div>
                         <span className="text-xs text-zinc-400">09:47</span>
                       </div>
-                      <div className="space-y-3 bg-[linear-gradient(180deg,#0f1c22_0%,#081318_100%)] p-4 text-sm">
-                        <div className="ml-auto max-w-[92%] rounded-2xl rounded-tr-md bg-[#005c4b] px-4 py-3 text-left shadow-lg">
-                          <p className="mb-2 font-semibold">Resumo da reunião de alinhamento</p>
-                          <p>1. Prioridade no onboarding para reduzir drop.</p>
-                          <p>2. Revisão da API de pagamentos segue com Maria.</p>
-                          <p>3. Próxima call marcada para quarta-feira.</p>
-                        </div>
-                        <div className="ml-auto max-w-[92%] rounded-2xl rounded-tr-md bg-[#005c4b] px-4 py-3 text-left shadow-lg">
-                          <p className="mb-2 font-semibold">Próximos passos</p>
-                          <p>• João finaliza o doc até sexta.</p>
-                          <p>• Maria envia revisão final da API.</p>
-                          <p>• Time recebe tarefas no próprio WhatsApp.</p>
+                      <div className="bg-[linear-gradient(180deg,#0f1c22_0%,#081318_100%)] p-4 text-sm">
+                        <div className="ml-auto max-w-[95%] rounded-2xl rounded-tr-md bg-[#005c4b] px-4 py-3 text-left shadow-lg space-y-2.5">
+                          <p className="font-bold text-white">📋 Reunião de Alinhamento</p>
+                          <p className="text-xs text-green-300/70">Hoje • 45 min</p>
+
+                          <div className="pt-1">
+                            <p className="font-semibold text-green-200 text-xs uppercase tracking-wide mb-1">✅ Decisões</p>
+                            <p className="text-white/90">• Prioridade no onboarding</p>
+                            <p className="text-white/90">• Próxima call: quarta-feira</p>
+                          </div>
+
+                          <div className="pt-1">
+                            <p className="font-semibold text-green-200 text-xs uppercase tracking-wide mb-1">📌 Tarefas</p>
+                            <p className="text-white/70 text-xs font-semibold mt-1">👤 João</p>
+                            <p className="text-white/90">→ Finalizar doc de onboarding <span className="text-white/50">(sex)</span></p>
+                            <p className="text-white/70 text-xs font-semibold mt-1.5">👤 Maria</p>
+                            <p className="text-white/90">→ Revisão final da API</p>
+                          </div>
                         </div>
                       </div>
                     </Card>
@@ -959,15 +963,15 @@ function PricingSection() {
       name: "Free",
       monthly: "R$ 0",
       yearly: "R$ 0",
-      description: "Para testar o fluxo completo antes de subir o time inteiro.",
+      description: "Teste agora. Sem cartão. Sem compromisso. Veja o resumo chegar no WhatsApp na sua próxima reunião.",
       features: [
         "3 reuniões grátis",
-        "Envio para o WhatsApp",
-        "Suporte por e-mail",
-        "Controle de tarefas pelo app",
-        "Sem chatbot com IA",
+        "Resumo automático no WhatsApp",
+        "Tarefas no kanban",
+        "Decisões registradas",
+        "Sem precisar de cartão",
       ],
-      cta: "Começar grátis",
+      cta: "Testar agora — é grátis",
       featured: false,
       accent: "default",
       periodLabel: "/mês",
@@ -976,9 +980,15 @@ function PricingSection() {
       name: "Starter",
       monthly: "R$ 49",
       yearly: "R$ 39",
-      description: "Para validar o fluxo da primeira reunião ao resumo no WhatsApp.",
-      features: ["30 resumos por mês", "Envio automático para WhatsApp", "Suporte por email"],
-      cta: "Ativar minha conta grátis",
+      description: "Para quem já viu o valor e quer escalar. 30 reuniões por mês sem precisar fazer nada manualmente.",
+      features: [
+        "30 reuniões por mês",
+        "Resumo + decisões no WhatsApp",
+        "Tarefas automáticas no kanban",
+        "Suporte por e-mail",
+        "Cancele quando quiser",
+      ],
+      cta: "Começar agora",
       featured: false,
       accent: "default",
       periodLabel: "/mês",
@@ -987,14 +997,15 @@ function PricingSection() {
       name: "Pro",
       monthly: "R$ 99",
       yearly: "R$ 69",
-      description: "Plano recomendado para times que querem transformar reunião em execução real.",
+      description: "Reuniões ilimitadas. Execução máxima. Seu time para de perder tempo e começa a entregar mais.",
       features: [
-        "Resumos ilimitados",
-        "Suporte por WhatsApp",
-        "Controle de tarefas pelo app",
-        "Com chatbot de IA",
+        "Reuniões ilimitadas",
+        "Resumo + decisões + kanban automático",
+        "Suporte direto no WhatsApp",
+        "Chatbot de IA para consulta",
+        "Portal do cliente incluído",
       ],
-      cta: "Quero meu resumo no WhatsApp",
+      cta: "Quero o Pro — começar agora",
       featured: true,
       accent: "primary",
       periodLabel: "/mês",
@@ -1003,14 +1014,14 @@ function PricingSection() {
       name: "Enterprise",
       monthly: "Consultar",
       yearly: "Consultar",
-      description: "Para operações maiores com mais governança e acompanhamento próximo.",
+      description: "Operação grande, necessidades específicas. A gente monta o fluxo certo pro seu time.",
       features: [
         "Usuários ilimitados",
         "Onboarding assistido",
-        "Prioridade no suporte",
         "Integrações personalizadas",
+        "SLA e suporte prioritário",
       ],
-      cta: "Falar com vendas",
+      cta: "Falar com a equipe",
       featured: false,
       accent: "enterprise",
       periodLabel: "",
@@ -1022,13 +1033,13 @@ function PricingSection() {
       <div className="page-shell">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <Badge variant="outline" className="mb-6 rounded-full px-4 py-1.5">
-            Pricing e garantia
+            Planos
           </Badge>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight mb-6">
-            Vale a pena pagar quando o retorno chega já na próxima reunião.
+            Cada reunião que passa sem Notura é tempo e dinheiro jogados fora.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Escolha o ritmo do time e reduza risco com uma garantia clara desde a primeira compra.
+            Comece grátis agora. Sem cartão. Se não mudar sua operação em 7 dias, devolvemos tudo.
           </p>
         </div>
 
@@ -1106,14 +1117,14 @@ function PricingSection() {
             <div className="flex items-start gap-3">
               <ShieldCheck className="mt-1 h-5 w-5 text-primary" />
               <div>
-                <p className="font-semibold text-foreground">Garantia de 7 dias.</p>
+                <p className="font-semibold text-foreground">Garantia incondicional de 7 dias.</p>
                 <p className="text-sm text-muted-foreground">
-                  Se não gostar, devolvemos 100% do valor pago, sem perguntas e sem burocracia.
+                  Testou, não gostou — 100% do valor de volta, sem perguntas, sem burocracia, sem enrolação.
                 </p>
               </div>
             </div>
             <Badge variant="outline" className="w-fit rounded-full px-3 py-1">
-              Risco baixo para testar
+              Risco zero para testar
             </Badge>
           </div>
         </Card>
@@ -1128,13 +1139,13 @@ function FAQSection() {
       <div className="page-shell">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <Badge variant="outline" className="mb-6 rounded-full px-4 py-1.5">
-            FAQ e objeções
+            Perguntas frequentes
           </Badge>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight mb-6">
-            As dúvidas que mais travam a decisão de compra.
+            Tudo que você precisa saber antes de começar.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Clareza sobre privacidade, compatibilidade e operação reduz atrito antes do cadastro.
+            Respostas diretas. Sem enrolação.
           </p>
         </div>
 
@@ -1157,22 +1168,22 @@ function FAQSection() {
           <Card className="rounded-3xl border-border/70 p-6 md:p-8 bg-secondary/30">
             <Badge className="mb-5 rounded-full bg-green-500 text-white">Atendimento humano</Badge>
             <h3 className="text-2xl font-display font-bold tracking-tight mb-4">
-              Ainda tem dúvidas? Fale com a gente no WhatsApp.
+              Ainda tem dúvida? A gente responde agora.
             </h3>
             <p className="mb-6 text-sm leading-7 text-muted-foreground">
-              Capture visitantes quase prontos para converter com um canal direto, rápido e familiar.
+              Fale com a equipe no WhatsApp e tire qualquer dúvida antes de assinar. Resposta em minutos, não em dias.
             </p>
             <Button asChild className="w-full rounded-full bg-primary text-white">
               <a href="#cta">
-                Falar no WhatsApp
+                Falar no WhatsApp agora
               </a>
             </Button>
             <div className="mt-6 space-y-3 text-sm text-muted-foreground">
               <p className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-primary" /> Resposta rápida para objeções comerciais
+                <CheckCircle2 className="h-4 w-4 text-primary" /> Resposta em minutos
               </p>
               <p className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-primary" /> Suporte para ativação inicial do time
+                <CheckCircle2 className="h-4 w-4 text-primary" /> Sem robô — atendimento humano
               </p>
             </div>
           </Card>
@@ -1198,18 +1209,24 @@ function CTASection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Button
+                asChild
                 size="lg"
                 className="rounded-full h-14 px-10 bg-white text-black hover:bg-zinc-200 text-lg font-bold shadow-2xl"
               >
-                Quero meu resumo no WhatsApp
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <a href="https://notura-app.vercel.app/signup">
+                  Quero meu resumo no WhatsApp
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
               </Button>
               <Button
+                asChild
                 size="lg"
                 variant="outline"
                 className="rounded-full h-14 px-10 border-zinc-700 text-white hover:bg-zinc-800 text-lg font-medium bg-transparent"
               >
-                Falar com vendas
+                <a href="https://wa.me/5513997744275" target="_blank" rel="noopener noreferrer">
+                  Falar com vendas
+                </a>
               </Button>
             </div>
             <p className="mt-6 text-sm text-zinc-400">
