@@ -1,5 +1,5 @@
 {
-  "name": "@workspace/notura",
+  "name": "notura",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -63,7 +63,6 @@
     "zod": "^3.24.0"
   },
   "devDependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.60.2",
     "@tailwindcss/typography": "^0.5.15",
     "@tailwindcss/vite": "^4.1.0",
     "@types/node": "^22.0.0",
